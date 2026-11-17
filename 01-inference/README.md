@@ -98,7 +98,9 @@ Run any Python file the same way, for example `uv run 01-inference/tools.py`.
 | `gemma-4-26b-a4b-it` (`VISION_MODEL`) | Images, long documents | 262,143 tokens |
 | `qwen3-embedding-8b` (`EMBEDDING_MODEL`) | Embeddings, 4,096 numbers per text | 32,768 tokens |
 
-A token is a piece of a word, the unit the model counts. The limits were read from the endpoint on 2026-11-13. It serves more models than these three, and `uv run check.py --models` lists them. To use another one in the chat examples, change `CHAT_MODEL` in `.env`.
+A token is a piece of a word, the unit the model counts. The limits were read from the endpoint on 2026-11-13. The endpoint has more models, but event keys work with these three. `uv run check.py --models` lists them.
+
+You can use another provider with your own key. That project does not earn the 20% for inference in [judging](../docs/judging.md), but it can still win.
 
 ### Point a framework at it
 
@@ -121,6 +123,7 @@ A problem outside this lab, such as a value missing from `.env`, is in [troubles
 |---|---|
 | `404` on every request, even `/models` | `AKAMAI_BASE_URL` is missing `/v1` at the end. |
 | `401 Invalid or missing API key.` | Paste the key into `.env` again, all of it, with no spaces. Ask staff if it repeats. |
+| `403 API key not allowed to access` and a model name | Event keys work only with the three models in [Models](#models). Use one of those names. |
 | `429 Request exceeds the account's remaining minute token budget.` | The account behind your key used its token budget for this minute, and everyone who shares that account counts against it. Wait a minute, then try again. Keep `max_tokens` small. |
 | `finish_reason` is `length` and the reply is mostly blank | You set `response_format` on a request where the model still needed a tool. Run the tool turns without it, then add it on the last request. |
 | The model ignores your tool, or calls it again and again | Use `CHAT_MODEL` for tools. The vision model is unreliable with tools. |

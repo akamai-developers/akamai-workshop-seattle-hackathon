@@ -11,6 +11,8 @@ Teams have up to 3 people. Solo projects are welcome. Get the submission link fr
 
 More services do not automatically mean a higher score. Choose what your app needs and use it well.
 
+Your event key works with three models, listed in [Lab 01](../01-inference/README.md#models). You can use another provider instead. That project does not earn the 20% for inference, but it can still win.
+
 ## Prepare your demo
 
 1. Name the user and the task.

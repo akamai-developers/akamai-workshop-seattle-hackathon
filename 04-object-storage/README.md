@@ -83,7 +83,7 @@ Keep the bucket private. Give users presigned links, signed links that expire, i
 | `AccessDenied` | The key lacks **Read/Write** on this bucket, or `OBJ_BUCKET` has a typo. Make a new key as in [Create it](#1-create-it). |
 | `InvalidAccessKeyId` | A new key can take a few seconds to work, so run it once more. If it repeats, copy the access key into `.env` again. A revoked key stops working at once. |
 | `SignatureDoesNotMatch` or `MissingContentLength` on upload | boto3 1.36 and later add checksums the service does not support. Keep the `Config(signature_version="s3v4", request_checksum_calculation="when_required")` line. Then check the secret key. |
-| `NoSuchBucket` | `OBJ_BUCKET` does not match the bucket's name, or `OBJ_ENDPOINT` is not the Chicago endpoint, `https://us-ord-10.linodeobjects.com`. |
+| `NoSuchBucket` | `OBJ_BUCKET` does not match the bucket's name, or `OBJ_ENDPOINT` is not the Chicago endpoint, `https://us-ord-10.linodeobjects.com`. If you made the bucket in Seattle, delete it and create it again in Chicago. |
 | A link that worked shows `AccessDenied` an hour later | Links last one hour. Run `storage.py` again for a new one. |
 
 ## Delete it
