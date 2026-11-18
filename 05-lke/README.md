@@ -14,10 +14,12 @@ LKE is Kubernetes that Akamai runs for you. Akamai runs the control plane, and y
 3. Choose the **LKE** tier, not LKE Enterprise.
 4. Choose **Seattle, WA** in **Region**.
 5. Choose the highest number in **Kubernetes Version**.
-6. Choose **No** under **HA Control Plane**. HA runs spare copies of the control plane and costs extra.
-7. Set **Linode 2 GB** to 1 node on the **Shared CPU** tab of **Add Node Pools**, and click **Add**. LKE does not offer the 1 GB plan.
-8. Click **Create Cluster**.
-9. If your `Downloads` folder holds an older `sea-<name>-lke-kubeconfig.yaml`, delete it first, so the new one keeps that name. Wait about 2 minutes. Then, on your cluster's page, click `sea-<name>-lke-kubeconfig.yaml` next to **Kubeconfig**. The file lands in your `Downloads` folder. kubectl uses it to log in to your cluster, so treat it like a password.
+6. If the form shows **Akamai App Platform**, choose **No**. It adds a paid HA control plane and larger nodes that this lab does not use.
+7. Choose **No** under **HA Control Plane**. HA runs spare copies of the control plane and costs extra.
+8. Leave **Enable Control Plane ACL** off. It limits which addresses can run `kubectl`, and venue Wi-Fi addresses change.
+9. Set **Linode 2 GB** to 1 node on the **Shared CPU** tab of **Add Node Pools**, and click **Add**. LKE does not offer the 1 GB plan.
+10. Click **Create Cluster**.
+11. If your `Downloads` folder holds an older `sea-<name>-lke-kubeconfig.yaml`, delete it first, so the new one keeps that name. Wait about 2 minutes. Then, on your cluster's page, click `sea-<name>-lke-kubeconfig.yaml` next to **Kubeconfig**. The file lands in your `Downloads` folder. kubectl uses it to log in to your cluster, so treat it like a password.
 
 <details><summary>Same thing with the CLI</summary>
 
