@@ -102,11 +102,11 @@ def ask(body: Question):
         if not s3:
             raise HTTPException(400, "No bucket is connected.")
         text = s3.get_object(Bucket=BUCKET, Key=body.file)["Body"].read().decode("utf-8", "replace")
-        prompt = f"Use this file, {body.file}, to answer.\n\n{text[:MAX_CHARS]}\n\nQuestion: {question}"
+        prompt = f"Use this file, {body.file}, to answer. If it lacks the answer, say so.\n\n{text[:MAX_CHARS]}\n\nQuestion: {question}"
     response = client.chat.completions.create(
         model=os.environ["CHAT_MODEL"],
         messages=[
-            {"role": "system", "content": "Answer in a few sentences. If a file is given and it lacks the answer, say so."},
+            {"role": "system", "content": "Answer in a few sentences of plain text, with no Markdown."},
             {"role": "user", "content": prompt},
         ],
         max_tokens=500,
